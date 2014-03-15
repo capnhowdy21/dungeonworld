@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dungeon World</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/vader/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+	<script src="js/jquery-1.11.0.js"></script>
+	<script src="js/jquery-ui-1.10.4.custom.js"></script>
+    </head>
+    <body>
+        <div>This is a test</div>
+        <div>
+            <input type='text' id='textinput' class='ui-corner-all'/>
+            <button id='testbutton'></button>
+        </div>
+        <script>
+            $(document).ready(function(){
+                $("#testbutton").button({label:"Submit"});
+                $("#testbutton").click(function(){
+                    var num = $("#textinput").val();
+                    alert("This is the value: " + num);});
+            });
+        </script>
+    </body>
+</html>
+
