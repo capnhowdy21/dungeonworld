@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dungeon World:Test Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/vader/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+	<script src="../js/jquery-1.11.0.js"></script>
+	<script src="../js/jquery-ui-1.10.4.custom.js"></script>
+    </head>
+    <body>
+        <!-- Use /dungeonworld/ajaxtest as a sample ajax call, it will get a response
+            that is a hash of the key. The response is then placed in a div 
+            dynamically, no page loading needed-->
+        <div id="rows">
+            <div id="row1">
+                Key 1:<input type="text" id="key1input" name="key1" value="" />
+            </div>           
+        </div>
+        <div>
+            <button id="newrow"></button>&nbsp;<button id="submitbutton"></button>
+        </div>
+        <div id="ajax">
+            
+        </div>
+        <script>
+            $(document).ready(function() {
+                //Creates a new div that holds an input for a new key
+                var rows = 1;
+                $("#newrow").button({label:"Add Key"})
+                    .click( function() {
+                        //Adds a now row for keys
+                        rows++;
+                        var row = $("<div>Key "+ rows + ":</div>").attr("id", "row" + rows);
+                        var input= $("<input type='text'/>").attr("id", "key"+rows+"input").attr("name", "key"+rows);
+                        $("#rows").append(row.append(input));
+                });
+                
+                var log = 0;
+                $("#submitbutton").button({label:"Submit"})
+                    .click( function(){
+                        //Create an object to hold all the names we will be storing.
+                        var data = new Object();
+                        
+                        // Get all the inputs and store them in keys.
+                        keys = $("input[type='text']");
+                        //Iterate over the keys and store the number and value in data
+                        $.each(keys, function(index, value){
+                            console.log(value);
+                            data[index] = $(value).val();
+                        });
+                        
+                        console.log(data); // this will log data to the console. hit F12 in chrome
+
+                        // Ajax request and then called a fuction when its done loading.
+                        // "/dungeonworld/ajaxtest" is the url for the servlet
+                        // data is the info being passed to the servlet
+                        $.get("/dungeonworld/ajaxtest", data)
+                                .done(function (resp){
+                                    $("#ajax").append("<br />Submit #" + ++log + ": <br />");
+                                    $("#ajax").append(resp);
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
+
