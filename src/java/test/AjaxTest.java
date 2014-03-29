@@ -35,10 +35,13 @@ public class AjaxTest extends HttpServlet
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         Enumeration names = request.getParameterNames();
+        int keys = 0;
         while(names.hasMoreElements()){
+            keys++;
             String str = (String)names.nextElement();
-            writer.print(str + ": " + request.getParameter(str) + "<br />");
-            System.out.println("");
+            String param = request.getParameter(str);
+            writer.print( "Key"+ keys+" : " + param + ", &nbsp;&nbsp; Hash: " + (str+param).hashCode()
+                    + "<br />");
         }
     }
 

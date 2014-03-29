@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Dungeon World:Test Page</title>
+        <title>Base Html</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/vader/jquery-ui-1.10.4.custom.css" rel="stylesheet">
@@ -9,23 +9,10 @@
 	<script src="../js/jquery-ui-1.10.4.custom.js"></script>
     </head>
     <body>
-        <div>This is a test</div>
-        <div>
-            <!-- Use /dungeonworld/gettest as a sample form input, it will return a page 
-                 that prints out the paramater names passed and values -->
-            <form action="/dungeonworld/gettest" method="get">
-            <!-- Name is the what will passed in the request, make sure form inputs have
-                 a name. Note that id is not whats passed! Id should be the name with the
-                 type after it -->
-            First Name: <input type="text" id="first" name="fname"><br> <!-- wrong -->
-            Middle Initial: <input type="text" id="mint" name="mint"><br> <!-- wrong -->
-            Last Name: <input type="text" id="lnameinput" name="lname"><br> <!-- correct -->
-            <input id="submitbutton" type="submit">
-          </form>
-        </div>
+        
         <script>
             $(document).ready(function(){
-                $("#submitbutton").button({label:"Submit"});
+                
             });
         </script>
     </body>
