@@ -11,13 +11,22 @@
     <body>
         <div>This is a response</div>
         <div>
-            <!-- Use /dungeonworld/responsetest as a sample form input, it will get a response
-            that sets values for some paramaters. The response is then placed in a div 
+            <!-- Use /dungeonworld/ajaxtest as a sample ajax call, it will get a response
+            that copys values and parameters. The response is then placed in a div 
             dynamically, no page loading needed-->
             
-            First Name: <input type="text" id="first" name="fname"><br> <!-- wrong -->
-            Middle Initial: <input type="text" id="mint" name="mint"><br> <!-- wrong -->
-            Last Name: <input type="text" id="lnameinput" name="lname"><br> <!-- correct -->
+            <div id="row1">
+                Name:<input type="text" id="name1input" name="name1" value="" />
+                Value:<input type="text" id="value1input" name="value1" value="" />
+            </div>
+            <div id="row2">
+                Name:<input type="text" id="name2input" name="name2" value="" />
+                Value:<input type="text" id="value2input" name="value2" value="" />
+            </div>
+            <div id="row3">
+                Name:<input type="text" id="name3input" name="name3" value="" />
+                Value:<input type="text" id="value3input" name="value3" value="" />
+            </div>
             <button id="submitbutton"></button>
         </div>
         <div id="ajax">
@@ -27,21 +36,22 @@
             $(document).ready(function() {
                 $("#submitbutton").button({label:"Submit"})
                         .click( function(){
-                    // Save variables
-                    var fname = $("#first").val();
-                    var mint = $("#mint").val();
-                    var lname = $("#lnameinput").val();
-                    // JSON Object notation, create name value pairs to be passed to server
-                    var person = {
-                        "fname": fname,
-                        "mint" : mint,
-                        "lname": lname
-                    };
-                    console.log(person);
+                    
+                    // Save variables:
+                    var data = new Object();
+                    //Gives data object a property with a name equal to the nameinput value
+                    //and sets that propertys value = to the value input.
+                    data[$("#name1input").val()] = $("#value1input").val();
+                    data[$("#name2input").val()] = $("#value2input").val();
+                    data[$("#name3input").val()] = $("#value3input").val();
+                    
+                    //data = JSON.stringify(data);
+                    console.log(data); // this will log data to the console. hit F12 in chrome
+                    
                     // Ajax request and then called a fuction when its done loading.
-                    $.get("/dungeonworld/ajaxtest", person)
-                            .done(function (data){
-                                $("#ajax").html(data);
+                    $.get("/dungeonworld/ajaxtest", data)
+                            .done(function (resp){
+                                $("#ajax").html(resp);
                     });
                 });
             });
