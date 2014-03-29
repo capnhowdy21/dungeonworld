@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Title</title> <!-- Title Goes Here -->
-        <!-- Do not change these files, you may add links or script sources -->
+        <title>Get vs Post</title>
+        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/vader/jquery-ui-1.10.4.custom.css" rel="stylesheet">
@@ -10,13 +10,40 @@
 	<script src="../js/jquery-ui-1.10.4.custom.js"></script>
     </head>
     <body>
-        
+        <div>
+        <!-- Get will post the parameters as a string in the url and return a new page
+        there is a limit to the number of characters that can be in a url, but it can be
+        bookmarked. Gets should never change data on the server -->
+            Get Form!
+            <form name="gettest" action="/dungeonworld/gettest" method="get">
+                <!-- Naming: the name attribute is the name of the paramater thats passed to
+                the servlet, not the id.  All inputs should have a name and id, the id should
+                be the name with type after it i.e., input, radio, select. -->
+                First Name: <input type="text" id="first" name="fname" /><!--Wrong-->
+                Middle Initial: <input type ="text" id="mint" name="mint" /><!--Wrong-->
+                Last Name: <input type ="text" id="lnameinput" name="lname" /><!--Correct-->
+                <button type="submit" value="Submit">Get Submit</button>
+            </form>
+        </div>
+        <br /><br /> 
+        <div>
+        <!-- Post will post the parameters hidden from the user. You can not bookmark a 
+        post result. You can send more information to the servlet though. Post can change
+        data on the server. -->
+            Post Form!
+            <form name="gettest" action="/dungeonworld/gettest" method="post">
+                Age: <input type="text" id="ageinput" name="age" />
+                Sex: <input type="text" id="sexinput" name="sex" />
+                DOB: <input type="text" id="dobinput" name="dob" />
+                <button type="submit" id="postsubmit" value="Submit"></button>
+            </form>
+        </div>
         <script>
-            // Keep all java script in here. Usually in the .ready(function()). This sets
-            // it so that script wont execute till the page finishes loading.
-            // helper functions can be placed outside I believe.
+
             $(document).ready(function(){
-                
+                // Notice the difference in button looks, this function sets up the proper
+                // styles for you automatically.
+                $("#postsubmit").button({label:"Post Submit"}); 
             });
         </script>
     </body>

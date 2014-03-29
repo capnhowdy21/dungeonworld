@@ -36,7 +36,9 @@ public class GetTest extends HttpServlet
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.print("<html><head><title>Request Test</title></head><body>");
-        writer.print("<div><h1>Paramaters: Values</h1><div>");
+        writer.print("<div><h1>Get Paramaters: Values</h1><div>");
+        writer.print("<div>Notice the url at the top, you can copy and past that and" +
+                " get this same page, try it!");
         Enumeration names = request.getParameterNames();
         while(names.hasMoreElements()){
             String str = (String)names.nextElement();
@@ -57,11 +59,15 @@ public class GetTest extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        response.setContentType("text/html");
+                response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
         writer.print("<html><head><title>Request Test</title></head><body>");
-        Enumeration<String> names = request.getParameterNames();
-        for (String str = names.nextElement(); names.hasMoreElements(); ){
+        writer.print("<div><h1>Post Paramaters: Values</h1><div>");
+        writer.print("<div>Notice the url at the top, this way can store more paramaters" +
+                " but you can't bookmark the results. Neither is particularly secure!");
+        Enumeration names = request.getParameterNames();
+        while(names.hasMoreElements()){
+            String str = (String)names.nextElement();
             writer.print("<div>" + str + ": " + request.getParameter(str) + "</div>");
         }
         writer.print("</body></html>");
