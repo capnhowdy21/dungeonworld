@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dungeon World:Test Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/vader/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+	<script src="../js/jquery-1.11.0.js"></script>
+	<script src="../js/jquery-ui-1.10.4.custom.js"></script>
+    </head>
+    <body>
+        <div>This is a response</div>
+        <div>
+            <!-- Use /dungeonworld/responsetest as a sample form input, it will get a response
+            that sets values for some paramaters. The response is then placed in a div 
+            dynamically, no page loading needed-->
+            
+            First Name: <input type="text" id="first" name="fname"><br> <!-- wrong -->
+            Middle Initial: <input type="text" id="mint" name="mint"><br> <!-- wrong -->
+            Last Name: <input type="text" id="lnameinput" name="lname"><br> <!-- correct -->
+            <button id="submitbutton"></button>
+        </div>
+        <div id="ajax">
+            
+        </div>
+        <script>
+            $(document).ready(function() {
+                $("#submitbutton").button({label:"Submit"})
+                        .click( function(){
+                    // Save variables
+                    var fname = $("#first").val();
+                    var mint = $("#mint").val();
+                    var lname = $("#lnameinput").val();
+                    // JSON Object notation, create name value pairs to be passed to server
+                    var person = {
+                        "fname": fname,
+                        "mint" : mint,
+                        "lname": lname
+                    };
+                    console.log(person);
+                    // Ajax request and then called a fuction when its done loading.
+                    $.get("/dungeonworld/ajaxtest", person)
+                            .done(function (data){
+                                $("#ajax").html(data);
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
+
