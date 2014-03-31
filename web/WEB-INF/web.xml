@@ -8,6 +8,14 @@
         <servlet-name>GetTest</servlet-name>
         <url-pattern>/gettest</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AjaxTest</servlet-name>
+        <servlet-class>test.AjaxTest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AjaxTest</servlet-name>
+        <url-pattern>/ajaxtest</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
