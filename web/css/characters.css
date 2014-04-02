@@ -1,31 +1,33 @@
-#namediv {
-    width: 66%;
+body {
+    min-width: 752px;
+    overflow-x: scroll;
+}
+#namediv, #startingmovesdiv {
+    width: 59.5%;
     float: left;
-    padding-right: .66%;
+    padding-right: .60%;
+    min-width: 444px;
 }
 
-#looksdiv {
-    width: 33%;
+#looksdiv, #arbdiv {
+    width: 39.5%;
     float: left;
-    padding-right: .33%;
+    padding-right: .40%;
+    min-width: 292px;
 }
 
 #statsdiv {
     width: 99%;
     clear: both;
     padding-right: 1%;
-}
-
-#arbdiv, #startingmovesdiv {
-    width: 49.5%;
-    float: left;
-    padding-right: .5%;
+    min-width: 736px;
 }
 
 #damagediv, #armordiv, #hpdiv {
     width: 33%;
     float: left;
     padding-right: .33%;
+    min-width: 244px;
 }
 
 .sectiontitle {
