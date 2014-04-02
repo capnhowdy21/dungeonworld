@@ -1,0 +1,35 @@
+#namediv {
+    width: 66%;
+    float: left;
+    padding-right: .66%;
+}
+
+#looksdiv {
+    width: 33%;
+    float: left;
+    padding-right: .33%;
+}
+
+#statsdiv {
+    width: 99%;
+    clear: both;
+    padding-right: 1%;
+}
+
+#arbdiv, #startingmovesdiv {
+    width: 49.5%;
+    float: left;
+    padding-right: .5%;
+}
+
+#damagediv, #armordiv, #hpdiv {
+    width: 33%;
+    float: left;
+    padding-right: .33%;
+}
+
+.sectiontitle {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
