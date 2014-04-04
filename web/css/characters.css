@@ -30,6 +30,13 @@ body {
     min-width: 244px;
 }
 
+#nameinput {
+    height:1.8em;
+    width:25%;
+    vertical-align: text-top;
+    margin-top: .1em;
+}
+
 .sectiontitle {
     background-color: #000000;
     color: #FFFFFF;
